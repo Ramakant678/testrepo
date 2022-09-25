@@ -1,0 +1,193 @@
+1.FOR RMOVING POM.XML FILE ERROR ITS ECLIPSE IDE BUG WHICH OCCURES IN HIGHER VERSION OF ECLIPSE AND CAN BE REMOVED BY THIS PLUGIN;-->onhandtrick.com
+------------------------------------------------------------------------------------------------------------------------------------
+
+        <build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.3.1</version>
+			</plugin>
+		</plugins>
+		<finalName>Demo_Project</finalName>
+	</build>
+
+2.FOR REMOVING index.jsp ERROR WE HAVE TO ADD JAVAX.SERVLET 4.O DEPENDENCY FOR IT GO FOR --> mvnrepository.com
+-----------------------------------------------------------------------------------------------------------------
+
+   <dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>javax.servlet-api</artifactId>
+    <version>4.0.1</version>
+    <scope>provided</scope>
+</dependency>
+
+3.For Compiler 1.8 in JRE System library use the following plugin
+---------------------------------------------------------------------
+  <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.10.1</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+  </plugin>
+
+4. For Tomcat-7 plugin 
+------------------------------------
+
+      <plugin>
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat7-maven-plugin</artifactId>
+        <version>2.3-SNAPSHOT</version>
+      </plugin>
+
+5. OPEN mvnRepository.com AND SEARCH springcore and find 4.3.9 version and copy that dependency
+-------------------------------------------------------------------------------------------------
+
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-core</artifactId>
+    <version>4.3.9.RELEASE</version>
+</dependency>
+
+6. SIMILARLY AS STEP-5 FIND springcontext adn 4.3.9 version dependency
+-----------------------------------------------------------------------------
+
+  <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-context</artifactId>
+    <version>4.3.9.RELEASE</version>
+  </dependency>
+
+7. SIMILARY FIND spring web dependency
+---------------------------------------------
+ <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-web</artifactId>
+    <version>4.3.9.RELEASE</version>
+ </dependency>
+
+8. SIMILARLY FIND spring webmvc dependency
+-------------------------------------------------
+ <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-webmvc</artifactId>
+    <version>4.3.9.RELEASE</version>
+ </dependency>
+
+8.Oracle ojdbc14.jar I CREATE IN MY LOCAL REPOSITORY;
+-------------------------------
+<dependency>
+    <groupId>oracle</groupId>
+    <artifactId>oracle-jdbc</artifactId>
+    <version>10.2.0-xe</version>
+</dependency>
+
+MYSQL DEPENDENCY
+---------------------------
+   <dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>8.0.30</version>
+</dependency>
+
+
+
+
+9.SPRING JDBC JAR
+-----------------------------
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-jdbc</artifactId>
+    <version>4.3.9.RELEASE</version>
+</dependency>
+
+10. SPRING CONTEXT SUPPORT
+---------------------------------
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-context-support</artifactId>
+    <version>4.3.9.RELEASE</version>
+</dependency>
+
+11.Tomcat-jasper dependency when we work on SpringBoot jsp project
+-------------------------------------------------------------------
+
+                <dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+ 12. Only Tomcat jdbc connection Pooling:->if you want only tomcat jdbc connection pooling then exclude Hikary connection pooling
+                                           bcz bydefault springoot first find HikariConnection then then find TomcatJdbc Connection Pooling
+                                           and then find DBCP2 Connection Pooling
+
+----------------------------------------------------------------------------------------------------------------------------
+                    <dependency>
+			<groupId>org.apache.tomcat</groupId>     <----------------Add this dependency
+			<artifactId>tomcat-jdbc</artifactId>
+			<version>9.0.56</version>
+                   </dependency>
+
+       ***   ------SEE how to exclude Hikary connection pooling---------------------
+-------------------------------------------------------------------------------------
+
+           <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>com.zaxxer</groupId>
+					<artifactId>HikariCP</artifactId>
+
+				</exclusion>
+                        </exclusions>
+           </dependency>
+
+13. Only DBCP Connection Pooling ->if you want only dbcp connection pooling then exclude Hikary and tomcat connection Pooling
+-------------------------------------------------------------------------------------------------------------------------------
+<dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-dbcp2</artifactId>    <----------------Add this dependency
+    <version>2.3.0</version>
+</dependency>
+     
+     ****-------------SEE HOW TO EXCLUDE HIKARY AND TOMCAT CONNECTION POOLING----------------------------
+     ------------------------------------------------------------------------------------------------------
+           <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+			<exclusions>                                               
+				<exclusion>
+					<groupId>com.zaxxer</groupId>
+					<artifactId>HikariCP</artifactId>
+
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.tomcat</groupId>
+					<artifactId>tomcat-jdbc</artifactId>
+
+				</exclusion>
+                      </exclusions>
+            </dependency>
+14. If we want to use third party connection pooling then first exclude Hikary connection pool from spring-boot-starter-jdbc dependency ,
+         bcz by default it will available.then add third party connection pooling dependency like c3p0,proxool,etc
+AND MAKE C3P0.PROPERTIES FILE UNDER src/main/resources folder 
+    --------------------------------------------------------------------------------------------------------------------------------------
+
+15=====================================================================================================================================================
+***************************************************************Hibernate Dependency*****************************************************************
+                <dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>4.3.9.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>4.3.9.Final</version>
+		</dependency>
+=====================================================================================================================================================

@@ -1,0 +1,23 @@
+<web-app id="WebApp_ID" version="2.4"
+xmlns="http://java.sun.com/xml/ns/j2ee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+
+</web-app>
+
+**************this is servlet 4.x version supportable ******************
+<web-app version="4.0" 
+xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+   http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+  
+</web-app>	
+
+
+NOTE:
+OUR WEB.XML IS DECLARING OUR APPLICATION AS BEING A SERVLET 2.3 COMPAITABLE WEB APPLICATION
+BUT EXPRESSION LANGUAGE WAS INTRODUCED IN 2.4 VESION THATS WHY IN JSP PAGE ISELIGNORED="FALSE" NOT SUPPORTED
+SO FIRST CHANGE WEB.XML FILE WITH ABOVE 2.4 VERSION THEN  IT WILL BE SUPPORTED. 
